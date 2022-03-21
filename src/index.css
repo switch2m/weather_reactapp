@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: url("./images/background-img.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  text-align: center;
+}
+.container {
+  width: 65%;
+  height: 80vh;
+  margin: 50px auto;
+  background-color: rgba(0, 0, 0, 0.73);
+  border-radius: 25px;
+}
+
+.search-input{
+        width: 100%;
+        padding: 12px 24px;
+        font-size: 25px;
+        line-height: 30px;        
+        color: #fff;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-size: 20px 20px;
+        background-position: 100% center;
+        border-radius: 25px 25px 0px 0px;
+        border: 0.5px solid #575756;
+        transition: all 250ms ease-in-out;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        text-align: center;
+        
+}
+
+.search-box {
+  width: 100%; 
+  margin: 0 0 40px;
+}
+
+
+.location-box .location {
+  color: #FFF;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}
+
+.location-box .date {
+  position: relative;
+  color: #fff;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+}
+
+.weather-box {
+  text-align: center;
+}
+
+.weather-box .temp {
+  position: relative;
+  display: inline-block;
+  margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 15px 25px;
+  color: #FFF;
+  font-size: 50px;
+  font-weight: 900;
+  text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+  text-align: center;
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+.weather-box .weather {
+  color: #FFF;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}
+.text{
+  font-size: 25px;
+  color: #fff;
+  text-align: left;
+  padding-left: 7px ;
+}
+.weather-box .list-info{
+  list-style-type: none;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+.underline {
+  height: 0.1rem;
+  width: auto;
+  background: rgba(255, 255, 255, 0.678);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.templist{
+  float: right;
+}
+
+@media screen and (max-width: 1200px) {
+  .underline{
+    width: auto;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .weather-box .list-info{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 20px;
+  }
+
+}
