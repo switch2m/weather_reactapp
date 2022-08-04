@@ -21,7 +21,7 @@ pipeline {
             steps {
                 echo 'deploying the project'
                 script {
-                    def dockercmd = 'docker run -p 3080:3000 switch2mdock/weatherapp:${BUILD_NUMBER}'
+                    def dockercmd = 'docker run -p 3080:3000 -d switch2mdock/weatherapp:${BUILD_NUMBER}'
                     sshagent(['dani-webserver']) {
                         sh "ssh dani@20.216.134.58 ${dockercmd}"
                     }
