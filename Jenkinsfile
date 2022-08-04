@@ -22,7 +22,7 @@ pipeline {
                 echo 'deploying the project'
                 script {
                     def dockercmd = 'docker run -p 3080:3000 switch2mdock/weatherapp:${BUILD_NUMBER}'
-                    sshagent(['delivmed_webserver']) {
+                    sshagent(['dani-webserver']) {
                         sh "ssh —o StrictHostKeyChecking=no dani@20.216.134.58 ${dockercmd}"
                     }
                 }
