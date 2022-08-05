@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'deploying the project'
                 script {
-                    def x = BUILD_NUMBER
+                    def x = BUILD_NUMBER - 4
                     echo x
                     def ltsbuild = x - 3
                     echo ltsbuild
