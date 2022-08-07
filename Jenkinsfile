@@ -9,7 +9,7 @@ pipeline {
                     echo x
                     int y = x--
                     echo y
-                    def dockerinit = 'docker stop jenkins-${JOB_NAME}-' + y
+                    
                     def dockercmd = 'docker run -d --name jenkins-${JOB_NAME}-${BUILD_NUMBER} -p 3080:3000 switch2mdock/weatherapp:${BUILD_NUMBER}'
                     sshagent(['dani-webserver']) {
                         sh "ssh dani@20.216.134.58 ${dockerinit}"
