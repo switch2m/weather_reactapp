@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'deploying the project'
                 script {
-                    def x = BUILD_NUMBER;
+                    def x = BUILD_NUMBER as Integer;
                     i = x - 1;
                     echo i 
                     def dockerinit = "docker stop jenkins-${JOB_NAME}-${i}"
