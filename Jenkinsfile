@@ -7,8 +7,8 @@ pipeline {
                 script {
                     def x = BUILD_NUMBER - 1
                     echo x
-                    int y = x
-                    int z = y - 1
+                    def y = x
+                    def z = y - 1
                     echo y
                     echo z
                     def dockerinit = 'docker stop jenkins-${JOB_NAME}-${BUILD_NUMBER -1}'
