@@ -10,7 +10,6 @@ pipeline {
                     def dockercmd = 'docker run -d --name ${BUILD_NUMBER} -p 3080:3000 switch2mdock/weatherapp:${BUILD_NUMBER}'
                     sshagent(['dani-webserver']) {
                         sh "ssh dani@20.216.134.58 ${dockerinit}"
-                        */sh "ssh dani@20.216.134.58 ${dockercmd}"/*
                     }
                 }
             }
