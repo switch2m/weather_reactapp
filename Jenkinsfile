@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'deploying the project'
                 script {
-                    int x = BUILD_NUMBER
+                    def x = BUILD_NUMBER
                     echo x
                     def y = x - 1
                     echo y
