@@ -6,8 +6,8 @@ pipeline {
                 echo 'deploying the project'
                 script {
                     def x = BUILD_NUMBER
-                    def build_num = x.toInteger()
-                    def ltsbuild = build_num - 1
+                    int build_num = x.toInteger()
+                    int ltsbuild = build_num - 1
                     echo build_num
                     echo ltsbuild
                     def dockerinit= "docker stop ${ltsbuild}"
