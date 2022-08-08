@@ -1,6 +1,6 @@
 def set_ltsbuild(x) {
     echo 'decrement buildnumber'
-    def y = Integer.parseInt(x)
-    return y-1
+    int y = x - 1
+    return y
 }
 return this
