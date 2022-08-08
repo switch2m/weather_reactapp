@@ -15,7 +15,7 @@ pipeline {
                     def x = BUILD_NUMBER
                     echo x
                     def ltsbuild = gv.set_ltsbuild(x)
-                    echo ltsbuild
+                    println(ltsbuild)
                 }
             }
         }
