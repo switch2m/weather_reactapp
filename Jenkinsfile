@@ -12,15 +12,6 @@ pipeline {
             steps {
                 echo 'deploying the project'
                 script {
-                    
-                    println(ltsbuild)
-                }
-            }
-        }
-        stage('deplyement') {
-            steps {
-                echo 'deploying the project'
-                script {
                     def x = BUILD_NUMBER
                     def ltsbuild = gv.set_ltsbuild(x)
                     def dockerinit= "docker stop ${ltsbuild}"
