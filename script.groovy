@@ -1,7 +1,8 @@
 def set_ltsbuild(x) {
     echo 'decrement buildnumber'
     println(x.getClass())
-    int y = x - 1
+    def y = x.toInteger() - 1
+    println(y.getClass() + y)
     return y
 }
 return this
