@@ -1,16 +1,21 @@
 pipeline {
     agent any
     stages {
+        stage('init') {
+            steps {
+                script {
+                    gv = load "script.groovy"
+                }
+            }
+        }
         stage('deplyement') {
             steps {
                 echo 'deploying the project'
                 script {
-                    def x = "${BUILD_NUMBER}"
-                    int build_num = x.toInteger()
-                    int ltsbuild = build_num - 1
-                    echo build_num
+                    def x = BUILD_NUMBER
+                    echo x
+                    def ltsbuild = gv.set_ltsbuild(x)
                     echo ltsbuild
-                    
                 }
             }
         }
