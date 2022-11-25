@@ -1,36 +1,34 @@
-pipeline {
+pipeline{
     agent any
-    stages {
-        stage('npm install') {
+    stages{
+        stage('env tools existance') {
             steps {
-                echo 'installing packages'
-                sh 'npm install'
+                echo "testing environment tools"
+                sh 'npm -v'
+                sh 'kubectl version'
+                sh 'docker -v'
             }
         }
-        stage('build image') {
-            steps {
-                echo 'Building the image'
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-                    sh "docker build -t switch2mdock/weatherapp:${BUILD_NUMBER} ."
+        stage('pushing the image to a docker registry') {
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'hub-dock-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                    sh 'docker build -t switch2mdock/weatherapp:${BUILD_NUMBER} .'
                     sh "echo $PASS | docker login -u $USER --password-stdin"
                     sh "docker push switch2mdock/weatherapp:${BUILD_NUMBER}"
                 }
             }
         }
-        stage('deplyement') {
-            steps {
-                echo 'deploying the project'
-                script {
-                    def buildNumber = Jenkins.instance.getItem('weath_app_pip').lastSuccessfulBuild.number
-                    echo "last succesfull build is ${buildNumber}"
-                    def dockerinit= "docker stop jenkins-${JOB_NAME}-${buildNumber}"
-                    def dockercmd = 'docker run -d --name jenkins-${JOB_NAME}-${BUILD_NUMBER} -p 3080:3000 switch2mdock/weatherapp:${BUILD_NUMBER}'
-                    sshagent(['dani-webserver']) {
-                        sh "ssh dani@20.216.134.58 ${dockerinit}"
-                        sh "ssh dani@20.216.134.58 ${dockercmd}"
-                    }
-                }
+        stage('deploy on a k8s cluster') {
+            steps{
+                echo "get the k8s credentials"
+                sh "az get credentials"
+                echo "deploy the app"
+                sh """
+                    cd helm 
+                    helm install --set appImage=switch2mdock/weatherapp:${BUILD_NUMBER} -f weather\values.yaml weather\
+                """
             }
         }
     }
-} 
+
+}
