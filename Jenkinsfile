@@ -12,6 +12,7 @@ pipeline{
                 sh 'kubectl version || true'
                 sh 'docker -v'
                 sh 'brew version'
+                sh 'helm version'
             }
         }
 
