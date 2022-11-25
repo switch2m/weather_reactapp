@@ -1,10 +1,14 @@
 pipeline{
     agent any
     stages{
+        // stage ('npm install packages') {
+        //     steps {
+        //         sh "npm install"
+        //     }
+        // }
         stage('env tools existance') {
             steps {
                 echo "testing environment tools"
-                sh 'npm -v'
                 sh 'kubectl version'
                 sh 'docker -v'
             }
