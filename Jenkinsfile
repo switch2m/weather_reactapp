@@ -22,7 +22,6 @@ pipeline{
         stage('deploy on a k8s cluster') {
             steps{
                 script {
-                    def valpath=""
                     echo "get the k8s credentials"
                     sh "az aks get-credentials --resource-group aks --name k8s"
                     echo "deploy the app"
