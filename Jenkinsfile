@@ -25,7 +25,6 @@ pipeline{
         }
         stage('deploy on a k8s cluster') {
             steps{
-                script {
                     echo "get the k8s credentials"
                     sh "az aks get-credentials --resource-group aks --name k8s"
                     echo "deploy the app"
@@ -39,7 +38,6 @@ pipeline{
                     sh "kubectl create namespace monitor"
                     sh "helm install stable prometheus-community/kube-prometheus-stack -n monitor"
                     sh "kubectl get all -n monitor"
-                }  
             }
         }
     }
