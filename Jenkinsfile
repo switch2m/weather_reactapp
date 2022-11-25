@@ -11,7 +11,7 @@ pipeline{
                 echo "testing environment tools"
                 sh 'kubectl version || true'
                 sh 'docker -v'
-                sh 'brew install helm'
+                sh 'helm version'
             }
         }
 
