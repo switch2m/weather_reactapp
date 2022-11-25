@@ -1,5 +1,4 @@
 /node_modules
 /.pnp
-.pnp.js
-weather_reactapp-0.1.0.tgz
 /build
+weather_reactapp-0.1.0.tgz
