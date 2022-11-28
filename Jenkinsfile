@@ -31,7 +31,7 @@ pipeline{
                     echo "deploy the app"
                     sh """
                         cd helm 
-                        helm install --set appImage=switch2mdock/weatherapp:${BUILD_NUMBER} -f /weather/values.yaml weather/
+                        helm install --set appImage=switch2mdock/weatherapp:${BUILD_NUMBER} -f /helm/weather/values.yaml /helm/weather/
                     """
                     echo 'set up promotheus on the cluster'
                     sh "helm repo add stable https://charts.helm.sh/stable"
@@ -42,5 +42,4 @@ pipeline{
             }
         }
     }
-
 }
