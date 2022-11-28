@@ -6,7 +6,7 @@ spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{ .Values.appName }}
+      app: {{ .Values.appName }}
   template:
     metadata:
       labels:
@@ -16,5 +16,5 @@ spec:
         - name: {{ .Values.appName }}
           image: {{ .Values.appImage }}
           ports:
-            containerPort: {{ .Values.containerPort }}
+          - containerPort: {{ .Values.containerPort }}
             protocol: TCP
