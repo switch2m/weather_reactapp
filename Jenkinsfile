@@ -31,14 +31,14 @@ pipeline{
                     echo "deploy the app"
                     sh """
                         cd helm 
-                        helm install --set appImage=switch2mdock/weatherapp:${BUILD_NUMBER} -f /helm/weather/values.yaml /helm/weather/
+                        helm install --set appImage=switch2mdock/weatherapp:${BUILD_NUMBER} -f /weather/values.yaml /weather/
                     """
-                    echo 'set up promotheus on the cluster'
-                    sh "helm repo add stable https://charts.helm.sh/stable"
-                    sh "helm repo add prometheus-community https://prometheus-community.github.io/helm-charts"
-                    sh "kubectl create namespace monitor"
-                    sh "helm install stable prometheus-community/kube-prometheus-stack -n monitor"
-                    sh "kubectl get all -n monitor"
+                    // echo 'set up promotheus on the cluster'
+                    // sh "helm repo add stable https://charts.helm.sh/stable"
+                    // sh "helm repo add prometheus-community https://prometheus-community.github.io/helm-charts"
+                    // sh "kubectl create namespace monitor"
+                    // sh "helm install stable prometheus-community/kube-prometheus-stack -n monitor"
+                    // sh "kubectl get all -n monitor"
             }
         }
     }
